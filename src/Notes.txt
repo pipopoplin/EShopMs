@@ -5,3 +5,6 @@ docker ps
 docker exec -it 94abc89def3f bash
 
 psql -U postgres
+
+\c CatalogDb
+
