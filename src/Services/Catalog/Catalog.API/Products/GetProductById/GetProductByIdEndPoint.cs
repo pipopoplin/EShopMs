@@ -4,7 +4,7 @@ public record GetProductByIdRequest(GetProductByIdQuery Query);
 
 public record GetProductByIdResponce(Product Product);
 
-public class GetProductByEndPoint : ICarterModule
+public class GetProductByIdEndPoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
@@ -16,7 +16,7 @@ public class GetProductByEndPoint : ICarterModule
 
             return Results.Ok(responce);
         })
-        .WithName("GetProductByEndPoint")
+        .WithName(nameof(GetProductByIdEndPoint))
         .Produces<GetProductByIdResponce>(StatusCodes.Status200OK)
         .ProducesProblem(StatusCodes.Status400BadRequest)
         .WithSummary("Get product by Id")
