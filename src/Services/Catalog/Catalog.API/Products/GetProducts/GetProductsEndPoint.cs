@@ -4,7 +4,6 @@
 
 public record GetProductResponce(IEnumerable<Product> Products);
 
-
 public class GetProductsEndPoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
