@@ -2,7 +2,7 @@
 
 public record GetProductByIdRequest(GetProductByIdQuery Query);
 
-public record GetProductByIdResponce(Product Products);
+public record GetProductByIdResponce(Product Product);
 
 public class GetProductByEndPoint : ICarterModule
 {
