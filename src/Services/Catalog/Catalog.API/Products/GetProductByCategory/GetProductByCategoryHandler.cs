@@ -1,4 +1,6 @@
 ﻿
+
+
 namespace Catalog.API.Products.GetProductByCategory;
 
 public record GetProductByCategoryQuery(string Category) : IQuery<GetProductByCategoryResult>;
@@ -13,11 +15,6 @@ internal class GetProductByCategoryHandler(IDocumentSession session, ILogger<Get
         logger.LogInformation($"GetProductByCategoryHandler.Handle called with {query}");
 
         var products = await session.Query<Product>().Where(p => p.Category.Contains(query.Category)).ToListAsync(cancellationToken);
-
-        if (products == null)
-        {
-            throw new ProductNotFoundException();
-        }
 
         return new GetProductByCategoryResult(products);
     }
