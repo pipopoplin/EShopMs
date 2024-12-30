@@ -22,6 +22,12 @@ services.AddMarten(opt =>
 }).UseLightweightSessions();
 
 services.AddScoped<IBasketRepository, BasketRepository>();
+services.Decorate<IBasketRepository, CachedBasketRepository>();
+
+services.AddStackExchangeRedisCache(opt => {
+    opt.Configuration = builder.Configuration.GetConnectionString("Redis");
+    //opt.InstanceName = "Basket";
+});
 
 services.AddExceptionHandler<CustomExceptionHandler>();
 
