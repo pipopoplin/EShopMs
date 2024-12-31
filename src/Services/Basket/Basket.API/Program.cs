@@ -32,7 +32,8 @@ services.AddStackExchangeRedisCache(opt => {
 services.AddExceptionHandler<CustomExceptionHandler>();
 
 services.AddHealthChecks()
-    .AddNpgSql(builder.Configuration.GetConnectionString("DataBase")!);
+    .AddNpgSql(builder.Configuration.GetConnectionString("DataBase")!)
+    .AddRedis(builder.Configuration.GetConnectionString("Redis")!);
 
 var app = builder.Build();
 
