@@ -1,3 +1,4 @@
+using Discount.Grpc;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
@@ -15,6 +16,7 @@ services.AddMediatR(conf =>
     conf.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 
+// Data Services
 services.AddMarten(opt =>
 {
     opt.Connection(builder.Configuration.GetConnectionString("DataBase")!);
@@ -29,6 +31,12 @@ services.AddStackExchangeRedisCache(opt => {
     //opt.InstanceName = "Basket";
 });
 
+services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(opt =>
+{
+    opt.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+});
+
+// Crosscutting cervices
 services.AddExceptionHandler<CustomExceptionHandler>();
 
 services.AddHealthChecks()
