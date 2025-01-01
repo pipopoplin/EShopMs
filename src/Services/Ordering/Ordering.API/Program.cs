@@ -1,14 +1,17 @@
+using Ordering.API;
+using Ordering.Application;
+using Ordering.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// add builder
 // Add services
-var assembly = typeof(Program).Assembly;
-
-var services = builder.Services;
-
-var app = builder.Build();
+builder.Services.AddApplicationServices(builder.Configuration)
+    .AddInfrastructureServices(builder.Configuration)
+    .AddApiServices(builder.Configuration);
 
 // configure http request pieline
+var app = builder.Build();
 
+app.UseApiServices();
 
 app.Run();
