@@ -1,0 +1,2 @@
+Command and Query handling
+Inerfaces for Application service

@@ -1,0 +1,3 @@
+Interfaces of application and doamin layers
+Reposytory implementaion classes
+code with external concerns DB access, Filesystem, email sending, web services
