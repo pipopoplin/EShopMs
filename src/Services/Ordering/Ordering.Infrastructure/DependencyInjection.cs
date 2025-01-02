@@ -5,13 +5,13 @@ namespace Ordering.Infrastructure;
 public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructureServices
-    (this IServiceCollection services, IConfiguration configuration)
+        (this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("Database");
 
-        //// Add services to the container.
+        // Add services to the container.
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-        //services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
         services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
@@ -19,7 +19,7 @@ public static class DependencyInjection
             options.UseSqlServer(connectionString);
         });
 
-        //services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+        services.AddScoped<ApplicationDbContext, ApplicationDbContext>();
 
         return services;
     }
