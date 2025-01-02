@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Ordering.Infrastructure.Data.Extensions;
+namespace Ordering.Infrastructure.Data.Extentions;
 public static class DatabaseExtentions
 {
     public static async Task InitialiseDatabaseAsync(this WebApplication app)
