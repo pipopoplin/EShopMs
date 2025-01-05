@@ -1,4 +1,4 @@
-﻿namespace Ordering.Application.Ordering.Orders.Commands.CreateOrder;
+﻿namespace Orders.Application.Orders.Commands.CreateOrder;
 
 public class CreateOrderCommandHandler(IApplicationDbContext dbContext) :
     ICommandHandler<CreateOrderCommand, CreateOrderResult>
